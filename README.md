@@ -126,3 +126,5 @@ if __name__ == '__main__':
     print(errors)
 
 ```
+
+Now go ahead and run `python scrapers/yellowpages.py`. Have fun!
