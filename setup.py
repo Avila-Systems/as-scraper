@@ -8,8 +8,8 @@ def get_long_description():
 
 setup(
     name='as-scraper',
-    version='2.0.0',
-    description='Python library for scraping inside Airflow.',
+    version='2.0.1',
+    description='Python library for scraping with Selenium.',
     long_description=get_long_description(),
     long_description_content_type='text/markdown',
     author='Alvaro Avila',

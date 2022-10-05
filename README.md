@@ -5,6 +5,8 @@
 
 Python library for scraping using Selenium
 
+> If you are looking for the library implemented inside airflow, go to https://github.com/Avila-Systems/as-scraper-airflow.
+
 # Installation
 
 The **as-scraper** library uses Geckodriver (Firefox) for scraping with the Selenium library.
