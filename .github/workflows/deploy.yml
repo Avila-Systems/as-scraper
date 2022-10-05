@@ -1,0 +1,29 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python 3.10
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install setuptools wheel twine autopep8 build
+      - name: Build package
+        run: |
+          python3 -m build
+      - name: Publish to PyPI
+        run: |
+          python3 -m twine upload dist/* -u $user -p $password
+        env:
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}

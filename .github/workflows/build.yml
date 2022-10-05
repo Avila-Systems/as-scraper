@@ -1,0 +1,105 @@
+name: Build
+
+on:
+  push
+
+jobs:
+  build-3-10:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python 3.10
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install setuptools wheel twine autopep8 build
+      - name: Lint with autopep8
+        run: |
+          python3 -m autopep8 -rd as_scraper/
+      - name: Build package
+        run: |
+          python3 -m build
+
+  build-3-9:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install setuptools wheel twine autopep8 build
+      - name: Lint with autopep8
+        run: |
+          python3 -m autopep8 -rd as_scraper/
+      - name: Build package
+        run: |
+          python3 -m build
+
+  build-3-8:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install setuptools wheel twine autopep8 build
+      - name: Lint with autopep8
+        run: |
+          python3 -m autopep8 -rd as_scraper/
+      - name: Build package
+        run: |
+          python3 -m build
+
+  build-3-7:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python 3.7
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install setuptools wheel twine autopep8 build
+      - name: Lint with autopep8
+        run: |
+          python3 -m autopep8 -rd as_scraper/
+      - name: Build package
+        run: |
+          python3 -m build
+
+  build-3-6:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python 3.6
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.6'
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install setuptools wheel twine autopep8 build
+      - name: Lint with autopep8
+        run: |
+          python3 -m autopep8 -rd as_scraper/
+      - name: Build package
+        run: |
+          python3 -m build
