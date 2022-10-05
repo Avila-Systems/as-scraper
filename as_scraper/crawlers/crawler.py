@@ -1,7 +1,7 @@
 from abc import ABCMeta
 from typing import List
 import requests
-from as_scraper.base.headers import HEADERS
+from as_scraper.headers import HEADERS
 
 
 class Crawler(metaclass=ABCMeta):
