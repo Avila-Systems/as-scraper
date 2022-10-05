@@ -31,7 +31,7 @@ So first we create a scraper that extends from the Scraper class, and define the
 Create the *scrapers/yellowpages.py* file and type the following code into it:
 
 ```python
-from as_scraper.base.scraper import Scraper
+from as_scraper.scraper import Scraper
 
 
 class YellowPagesScraper(Scraper):
@@ -46,7 +46,7 @@ Now, there are two execution options when running scrapers. We can either *load 
 For this example, let's go ahead and use the **Selenium** library. To configure this, simply add the following variable to your scraper:
 
 ```python
-from as_scraper.base.scraper import Scraper
+from as_scraper.scraper import Scraper
 
 
 class YellowPagesScraper(Scraper):
@@ -66,7 +66,7 @@ from typing import Optional
 from selenium.webdriver import Firefox
 from selenium.webdriver.common.by import By
 import pandas as pd
-from as_scraper.base.scraper import Scraper
+from as_scraper.scraper import Scraper
 
 
 class YellowPagesScraper(Scraper):
@@ -98,7 +98,7 @@ from typing import Optional
 from selenium.webdriver import Firefox
 from selenium.webdriver.common.by import By
 import pandas as pd
-from as_scraper.base.scraper import Scraper
+from as_scraper.scraper import Scraper
 
 class YellowPagesScraper(Scraper):
     COLUMNS = ['name', 'url']
