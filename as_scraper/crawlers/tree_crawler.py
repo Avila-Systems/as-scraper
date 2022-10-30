@@ -42,7 +42,7 @@ class TreeCrawler(Crawler):
           A list of sitemaps found in the `sitemap_parent`.
         '''
         if not self.sitemap_parent:
-            raise AttributeError('sitemap_index must be set')
+            raise AttributeError('sitemap_parent must be set')
         sitemap_content = self._load_html(self.sitemap_parent)
         soup = BeautifulSoup(sitemap_content, 'xml')
         return [loc.get_text() for loc in soup.find_all('loc')]
