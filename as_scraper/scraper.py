@@ -35,6 +35,7 @@ class Scraper(metaclass=ABCMeta):
     RESET_AFTER = None
     LOAD_TIMEOUT = None
     TEST_MODE = False
+    DTYPES = None
 
     def __init__(self, urls: Optional[List[str]] = None, test_mode: Optional[bool] = None):
         self.headers = HEADERS
@@ -176,6 +177,8 @@ class Scraper(metaclass=ABCMeta):
           the process in the second parameter.
         '''
         df = pd.DataFrame(columns=self.COLUMNS)
+        if self.DTYPES is not None:
+            df = df.astype(self.DTYPES, errors='ignore')
         errors = []
         urls_and_extras = self._parse_urls_and_extras(initial_df)
         for i, url_and_extras in tqdm(list(enumerate(urls_and_extras)), mininterval=60, unit='url'):
@@ -223,6 +226,8 @@ class Scraper(metaclass=ABCMeta):
           the process in the second parameter.
         '''
         df = pd.DataFrame(columns=self.COLUMNS)
+        if self.DTYPES is not None:
+            df = df.astype(self.DTYPES, errors='ignore')
         errors = []
         urls_and_extras = self._parse_urls_and_extras(initial_df)
         for url_and_extras in tqdm(urls_and_extras, mininterval=60, unit='url'):
