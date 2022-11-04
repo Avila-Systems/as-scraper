@@ -240,7 +240,7 @@ class Scraper(metaclass=ABCMeta):
                         [df, urls_df], ignore_index=True, verify_integrity=True)
                 except Exception as e:
                     errors.append(ScraperError(url, str(e)))
-                    if len(errors) > len(self.urls) * self.ERROR_THRESHOLD:
+                    if len(errors) > len(urls_and_extras) * self.ERROR_THRESHOLD:
                         raise ThresholdException(
                             self.ERROR_THRESHOLD * 100) from e
             else:
