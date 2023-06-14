@@ -44,7 +44,6 @@ class Scraper(metaclass=ABCMeta):
         self._session = None
         if test_mode is not None:
             self.TEST_MODE = test_mode
-            self.ERROR_THRESHOLD = 0
 
     @property
     def driver(self):
