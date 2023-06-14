@@ -181,7 +181,7 @@ class Scraper(metaclass=ABCMeta):
             df = df.astype(self.DTYPES, errors='ignore')
         errors = []
         urls_and_extras = self._parse_urls_and_extras(initial_df)
-        for i, url_and_extras in tqdm(list(enumerate(urls_and_extras)), mininterval=60, unit='url'):
+        for i, url_and_extras in tqdm(list(enumerate(urls_and_extras)), unit='url'):
             url, extras = url_and_extras
             self._load_html_selenium(url)
             try:
@@ -230,7 +230,7 @@ class Scraper(metaclass=ABCMeta):
             df = df.astype(self.DTYPES, errors='ignore')
         errors = []
         urls_and_extras = self._parse_urls_and_extras(initial_df)
-        for url_and_extras in tqdm(urls_and_extras, mininterval=60, unit='url'):
+        for url_and_extras in tqdm(urls_and_extras, unit='url'):
             url, extras = url_and_extras
             html = self._load_html_requests(url)
             if html is not None:
