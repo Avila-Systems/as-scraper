@@ -190,6 +190,7 @@ class Scraper(metaclass=ABCMeta):
                 df = pd.concat([df, urls_df], ignore_index=True,
                                verify_integrity=True)
             except Exception as e:
+                log.error(str(e))
                 errors.append(ScraperError(url, str(e)))
                 if len(errors) > len(urls_and_extras) * self.ERROR_THRESHOLD:
                     if not self.TEST_MODE:
