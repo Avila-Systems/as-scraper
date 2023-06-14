@@ -8,7 +8,7 @@ def get_long_description():
 
 setup(
     name='as-scraper',
-    version='2.3.2',
+    version='2.3.3',
     description='Python library for scraping with Selenium.',
     long_description=get_long_description(),
     long_description_content_type='text/markdown',
@@ -30,7 +30,7 @@ setup(
         'requests',
         'tqdm',
     ],
-    python_requires=">=3.6",
+    python_requires=">=3.7",
     classifiers=[
         'Intended Audience :: Developers',
         'Programming Language :: Python',
