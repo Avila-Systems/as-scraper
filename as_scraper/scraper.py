@@ -36,6 +36,8 @@ class Scraper(metaclass=ABCMeta):
     LOAD_TIMEOUT = None
     TEST_MODE = False
     DTYPES = None
+    HEADLESS = True
+    LOAD_IMAGES = False
 
     def __init__(self, urls: Optional[List[str]] = None, test_mode: Optional[bool] = None):
         self.headers = HEADERS
@@ -43,7 +45,7 @@ class Scraper(metaclass=ABCMeta):
         self._driver = None
         self._session = None
         if test_mode is not None:
-            self.TEST_MODE = test_mode
+            self.HEADLESS = not test_mode
 
     @property
     def driver(self):
@@ -57,11 +59,11 @@ class Scraper(metaclass=ABCMeta):
                 'browser.cache.offline.enable', False)
             firefox_options.set_preference('network.http.use-cache', False)
             firefox_options.set_preference('permissions.default.image', 2)
-            firefox_options.set_preference(
-                'dom.ipc.plugins.enabled.libflashplayer.so', 'false')
+            if not self.LOAD_IMAGES:
+                firefox_options.set_preference('dom.ipc.plugins.enabled.libflashplayer.so', 'false')
             firefox_options.set_preference(
                 'general.useragent.override', HEADERS['User-Agent'])
-            if not self.TEST_MODE:
+            if self.HEADLESS:
                 firefox_options.add_argument('--headless')
             else:
                 log.warning('Creating driver without headless mode')
