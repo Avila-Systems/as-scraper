@@ -58,8 +58,8 @@ class Scraper(metaclass=ABCMeta):
             firefox_options.set_preference(
                 'browser.cache.offline.enable', False)
             firefox_options.set_preference('network.http.use-cache', False)
-            firefox_options.set_preference('permissions.default.image', 2)
             if not self.LOAD_IMAGES:
+                firefox_options.set_preference('permissions.default.image', 2)
                 firefox_options.set_preference('dom.ipc.plugins.enabled.libflashplayer.so', 'false')
             firefox_options.set_preference(
                 'general.useragent.override', HEADERS['User-Agent'])
