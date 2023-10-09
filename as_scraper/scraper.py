@@ -46,6 +46,7 @@ class Scraper(metaclass=ABCMeta):
         self._session = None
         if test_mode is not None:
             self.HEADLESS = not test_mode
+            self.TEST_MODE = test_mode
 
     @property
     def driver(self):
@@ -201,8 +202,9 @@ class Scraper(metaclass=ABCMeta):
                 log.info('Reseting Selenium driver')
                 self.driver.quit()
                 self._driver = None
-        self.driver.quit()
-        self._driver = None
+        if not self.TEST_MODE:
+            self.driver.quit()
+            self._driver = None
         return df, errors
 
     def _execute_requests(
