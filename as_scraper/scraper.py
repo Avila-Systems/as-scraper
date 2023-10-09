@@ -48,6 +48,13 @@ class Scraper(metaclass=ABCMeta):
             self.HEADLESS = not test_mode
             self.TEST_MODE = test_mode
 
+
+    def custom_options(self, options: FirefoxOptions):
+        '''
+        Customize the FirefoxOptions object used for selenium.
+        '''
+        pass
+
     @property
     def driver(self):
         'Create a Firefox driver for selenium'
@@ -71,6 +78,7 @@ class Scraper(metaclass=ABCMeta):
                 if self.LOG_PATH is None:
                     self.LOG_PATH = 'geckodriver.log'
             service = Service(log_path=self.LOG_PATH)
+            self.custom_options(firefox_options)
             self._driver = Firefox(options=firefox_options, service=service)
             if self.LOAD_TIMEOUT is not None:
                 self._driver.set_page_load_timeout(self.LOAD_TIMEOUT)
@@ -84,7 +92,7 @@ class Scraper(metaclass=ABCMeta):
             self._session = Session()
             self._session.mount('https://', adapter)
         return self._session
-
+    
     def _load_html_selenium(self, url: str):
         '''
         Load the html for an url using Selenium library.
