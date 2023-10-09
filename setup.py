@@ -8,7 +8,7 @@ def get_long_description():
 
 setup(
     name='as-scraper',
-    version='2.4.1',
+    version='2.4.2',
     description='Python library for scraping with Selenium.',
     long_description=get_long_description(),
     long_description_content_type='text/markdown',
@@ -23,7 +23,8 @@ setup(
         include=['as_scraper*'],
     ),
     install_requires=[
-        'selenium',
+        'attrs<=23.0'
+        'selenium<=4.10',
         'bs4',
         'lxml',
         'pandas',
