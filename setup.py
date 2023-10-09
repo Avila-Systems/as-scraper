@@ -23,7 +23,7 @@ setup(
         include=['as_scraper*'],
     ),
     install_requires=[
-        'attrs<=23.0'
+        'attrs<=23.0',
         'selenium<=4.10',
         'bs4',
         'lxml',
