@@ -206,7 +206,7 @@ class Scraper(metaclass=ABCMeta):
                     if not self.TEST_MODE:
                         self.driver.quit()
                     raise ThresholdException(self.ERROR_THRESHOLD * 100) from e
-            if self.RESET_AFTER is not None and (i + 1) % self.RESET_AFTER == 0:
+            if self.RESET_AFTER is not None and (i + 1) % self.RESET_AFTER == 0 and not self.TEST_MODE:
                 log.info('Reseting Selenium driver')
                 self.driver.quit()
                 self._driver = None
